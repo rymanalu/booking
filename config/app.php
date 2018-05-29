@@ -13,7 +13,9 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'Travelicious'),
+
+    'initial' => env('APP_INITIAL_NAME', 'TL'),
 
     /*
     |--------------------------------------------------------------------------
