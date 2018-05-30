@@ -13,4 +13,8 @@ class Admin extends Model implements
     AuthorizableContract
 {
     use Authenticatable, Authorizable;
+
+    protected $fillable = [
+        'username', 'name', 'password',
+    ];
 }

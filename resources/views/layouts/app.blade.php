@@ -24,7 +24,7 @@
                     <div class="navbar-custom-menu">
                         <ul class="nav navbar-nav">
                             <li>
-                                <a href="#">
+                                <a href="{{ route('profile.index') }}">
                                     <span class="hidden-xs">Welcome, {{ Auth::user()->name }}</span>
                                 </a>
                             </li>
@@ -61,7 +61,9 @@
                     </ol>
                 </section>
 
-                <section class="content"></section>
+                <section class="content">
+                    @yield('content')
+                </section>
             </div>
 
             <footer class="main-footer">

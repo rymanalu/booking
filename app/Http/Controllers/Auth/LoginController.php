@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
@@ -39,13 +40,26 @@ class LoginController extends Controller
     }
 
     /**
+     * Get the needed authorization credentials from the request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return array
+     */
+    protected function credentials(Request $request)
+    {
+        return $this->isUser()
+            ? ['email' => $request->input('username'), 'password' => $request->input('password')]
+            : $request->only($this->username(), 'password');
+    }
+
+    /**
      * Get the login username to be used by the controller.
      *
      * @return string
      */
     public function username()
     {
-        return str_contains(request()->input('username'), '@') ? 'email' : 'username';
+        return 'username';
     }
 
     /**
@@ -61,5 +75,25 @@ class LoginController extends Controller
         $request->session()->invalidate();
 
         return redirect()->route('login');
+    }
+
+    /**
+     * Get the guard to be used during authentication.
+     *
+     * @return \Illuminate\Contracts\Auth\StatefulGuard
+     */
+    protected function guard()
+    {
+        return Auth::guard($this->isUser() ? 'user' : 'admin');
+    }
+
+    /**
+     * Determine the type of person who try to login.
+     *
+     * @return bool
+     */
+    protected function isUser()
+    {
+        return str_contains(request()->input('username'), '@');
     }
 }
