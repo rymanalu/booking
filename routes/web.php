@@ -19,3 +19,5 @@ Route::prefix('profile')->group(function () {
     Route::get('/', 'ProfileController@index')->name('profile.index');
     Route::post('/', 'ProfileController@update')->name('profile.update');
 });
+
+Route::resource('admins', 'AdminsController');

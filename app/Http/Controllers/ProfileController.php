@@ -24,11 +24,7 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        $user = user();
-
-        $isUser = isset($user->email);
-
-        return view('profile', compact('user', 'isUser'));
+        return view('profile');
     }
 
     public function update(ProfileRequest $request)

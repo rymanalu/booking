@@ -1,7 +1,9 @@
 @extends('layouts.base')
 
-@section('styles')
+@section('css')
     <link rel="stylesheet" href="{{ asset('adminlte/dist/css/skins/skin-blue.min.css') }}">
+
+    @yield('styles')
 @endsection
 
 @section('body')
@@ -46,6 +48,13 @@
                 <section class="sidebar">
                     <ul class="sidebar-menu" data-widget="tree">
                         <li><a href="{{ route('home') }}"><i class="fa fa-home"></i> <span>Home</span></a></li>
+                        @if (! $isUser)
+                            <li><a href="{{ route('admins.index') }}"><i class="fa fa-users"></i> <span>Admins</span></a></li>
+                            <li><a href="#"><i class="fa fa-building"></i> <span>Outlets</span></a></li>
+                            <li><a href="#"><i class="fa fa-calendar"></i> <span>Schedules</span></a></li>
+                            <li><a href="#"><i class="fa fa-shopping-cart"></i> <span>Orders</span></a></li>
+                            <li><a href="#"><i class="fa fa-users"></i> <span>Users</span></a></li>
+                        @endif
                     </ul>
                 </section>
             </aside>
@@ -77,4 +86,6 @@
     <script src="{{ asset('adminlte/bower_components/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
     <script src="{{ asset('adminlte/bower_components/fastclick/lib/fastclick.js') }}"></script>
     <script src="{{ asset('adminlte/dist/js/adminlte.min.js') }}"></script>
+
+    @yield('javascript')
 @endsection

@@ -3,7 +3,7 @@
 @section('header', 'Profile')
 
 @section('breadcrumb')
-    <li class="active"><a><i class="fa fa-user"></i> Profile</a></li>
+    <li class="active"><a href="#"><i class="fa fa-user"></i> Profile</a></li>
 @endsection
 
 @section('content')

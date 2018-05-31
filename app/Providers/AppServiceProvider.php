@@ -13,7 +13,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $this->viewComposer();
     }
 
     /**
@@ -24,5 +24,15 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         //
+    }
+
+    private function viewComposer()
+    {
+        view()->composer(['layouts.app', 'profile'], function ($view) {
+            $user = user();
+            $isUser = isset($user->email);
+
+            $view->withUser($user)->withIsUser($isUser);
+        });
     }
 }

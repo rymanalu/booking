@@ -1,6 +1,6 @@
 @extends('layouts.base')
 
-@section('styles')
+@section('css')
     <link rel="stylesheet" href="{{ asset('adminlte/plugins/iCheck/square/blue.css') }}">
 @endsection
 
