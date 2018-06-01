@@ -9,5 +9,23 @@ class Schedule extends Model
 {
     use SoftDeletes;
 
-    protected $dates = ['deleted_at'];
+    protected $fillable = [
+        'from', 'to', 'date', 'time', 'price', 'is_full',
+    ];
+
+    protected $casts = [
+        'is_full' => 'boolean',
+    ];
+
+    protected $dates = ['deleted_at', 'date'];
+
+    public function fromOutlet()
+    {
+        return $this->belongsTo(Outlet::class, 'from');
+    }
+
+    public function toOutlet()
+    {
+        return $this->belongsTo(Outlet::class, 'to');
+    }
 }

@@ -20,4 +20,7 @@ Route::prefix('profile')->group(function () {
     Route::post('/', 'ProfileController@update')->name('profile.update');
 });
 
-Route::resource('admins', 'AdminsController');
+Route::resources([
+    'admins' => 'AdminsController',
+    'schedules' => 'SchedulesController',
+]);
