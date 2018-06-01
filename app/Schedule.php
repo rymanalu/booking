@@ -10,7 +10,7 @@ class Schedule extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'from', 'to', 'date', 'time', 'price', 'is_full',
+        'from', 'to', 'date', 'time', 'price', 'is_full', 'capacity', 'available',
     ];
 
     protected $casts = [
