@@ -80,7 +80,7 @@
                         <label for="price" class="col-sm-3 control-label">Price</label>
 
                         <div class="col-sm-9">
-                            <input type="number" name="price" id="price" class="form-control" value="{{ old('price', $schedule->price) }}">
+                            <input type="number" name="price" id="price" class="form-control" value="{{ old('price', $schedule->price) }}" min="0">
                             @if ($errors->has('price'))
                                 <span class="help-block">{{ $errors->first('price') }}</span>
                             @endif

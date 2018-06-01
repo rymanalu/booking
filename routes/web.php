@@ -20,8 +20,11 @@ Route::prefix('profile')->group(function () {
     Route::post('/', 'ProfileController@update')->name('profile.update');
 });
 
+Route::post('orders/{order}/pay', 'OrdersController@pay');
+
 Route::resources([
     'admins' => 'AdminsController',
     'schedules' => 'SchedulesController',
+    'orders' => 'OrdersController',
     'users' => 'UsersController',
 ]);
