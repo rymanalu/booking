@@ -23,4 +23,5 @@ Route::prefix('profile')->group(function () {
 Route::resources([
     'admins' => 'AdminsController',
     'schedules' => 'SchedulesController',
+    'users' => 'UsersController',
 ]);

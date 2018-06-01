@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class AdminRequest extends FormRequest
+class UserRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,17 +24,20 @@ class AdminRequest extends FormRequest
      */
     public function rules()
     {
-        $usernameUnique = Rule::unique('admins', 'username')->where(function ($query) {
+        $emailUnique = Rule::unique('users', 'email')->where(function ($query) {
             return $query->whereNull('deleted_at');
         });
 
         return [
-            'username' => [
+            'email' => [
                 'required',
-                $this->isMethod('post') ? $usernameUnique : $usernameUnique->ignore($this->segment(2)),
+                'email',
+                $this->isMethod('post') ? $emailUnique : $emailUnique->ignore($this->segment(2)),
             ],
             'name' => 'required',
-            'password' => ['sometimes', 'string', 'min:6', 'confirmed'],
+            'phone_number' => 'required',
+            'address' => 'required',
+            'password' => ['sometimes', 'min:6', 'confirmed'],
         ];
     }
 }
