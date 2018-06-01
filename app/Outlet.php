@@ -9,5 +9,9 @@ class Outlet extends Model
 {
     use SoftDeletes;
 
+    protected $fillable = [
+        'name', 'address',
+    ];
+
     protected $dates = ['deleted_at'];
 }
