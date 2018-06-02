@@ -27,4 +27,5 @@ Route::resources([
     'schedules' => 'SchedulesController',
     'orders' => 'OrdersController',
     'users' => 'UsersController',
+    'outlet' => 'OutletController',
 ]);
